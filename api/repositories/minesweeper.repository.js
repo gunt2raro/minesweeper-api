@@ -85,7 +85,7 @@ function fillWithNumbers(game) {
 // @param cel: cel clicked
 // @returns a game matrix
 function discoverEmptySpace(game, cel) {
-    // 4th cuadrant
+    // 4th quadrant
     for(let i=cel.x; i < game[0].length; i++ ) {
         for(let j=cel.y; j < game.length; j++ ) {
             if(
@@ -97,7 +97,7 @@ function discoverEmptySpace(game, cel) {
             }
         }
     }
-    // 3rd cuadrant
+    // 3rd quadrant
     for(let i=cel.x; i >= 0; i-- ) {
         for(let j=cel.y; j < game.length; j++ ) {
             if(
@@ -109,7 +109,7 @@ function discoverEmptySpace(game, cel) {
             }
         }
     }
-    // 1st cuadrant
+    // 1st quadrant
     for(let i=cel.x; i >= 0; i-- ) {
         for(let j=cel.y; j >= 0; j-- ) {
             if(
@@ -121,7 +121,7 @@ function discoverEmptySpace(game, cel) {
             }
         }
     }
-    // 2nd cuadrant
+    // 2nd quadrant
     for(let i=cel.x; i < game[0].length; i++ ) {
         for(let j=cel.y; j >= 0; j-- ) {
             if(
