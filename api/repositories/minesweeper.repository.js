@@ -134,7 +134,6 @@ function discoverEmptySpace(game, cel) {
         }
     }
     return game
-
 }
 
 // openSelectedCol
