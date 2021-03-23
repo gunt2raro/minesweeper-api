@@ -28,6 +28,7 @@ function login(user) {
                 if(bcrypt.compareSync(user.password, data[0].password)) {
                     return {
                         username: data[0].username,
+                        _id: data[0]._id,
                         token: jwt.sign({
                             username: data[0].username,
                             _id: data[0]._id
