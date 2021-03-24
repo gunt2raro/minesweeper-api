@@ -35,6 +35,7 @@ router.post('/register', (req, res) => {
                                 .status(200)
                                 .send({
                                     data: {
+                                        _id: data2._id,
                                         username: data2.username
                                     }
                                 })

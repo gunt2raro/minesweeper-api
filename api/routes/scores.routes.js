@@ -53,12 +53,4 @@ router.get('/',  authMiddleware.isAuthenticated, (req, res) => {
         })
 })
 
-router.get('/:id', authMiddleware.isAuthenticated, (req, res) => {
-    res
-        .status(200)
-        .send({
-            data: null
-        })
-})
-
 module.exports = router
