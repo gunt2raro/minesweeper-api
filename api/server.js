@@ -19,6 +19,6 @@ router.use(cors("*"))
 router.use(bearerToken())
 router.use('/api/v1', require('./routes.v1'))
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", () => {
     console.log("server running at 3000")
 })
