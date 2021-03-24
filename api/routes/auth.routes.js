@@ -20,7 +20,7 @@ router.post('/register', (req, res) => {
     authRepository
         .getUserByUserName(req.body.username)
         .then(data => {
-            if(data.length > 0) {
+            if(data) {
                 res
                     .status(400)
                     .send({

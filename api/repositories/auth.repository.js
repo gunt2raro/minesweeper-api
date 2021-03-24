@@ -4,7 +4,7 @@ const   DataStore = require('nedb'),
         jwt = require('jsonwebtoken'),
         bcrypt = require('bcrypt-nodejs')
 
-const secretJWTSeed = "1974niPjL8gfA3kFIUeV"
+const secretJWTSeed = "1974niPjL8gfA3kFIUeV" // this should be secreat if super important!
 
 const db = new DataStore({
     filename: path.resolve(appRoot.path, 'api', 'dbs', 'auth.db')
@@ -12,9 +12,19 @@ const db = new DataStore({
 db.loadDatabase();
 
 function getUserByUserName(username) {
-    return new Promise((res, rej) => db.find(
+    return new Promise((res, rej) => db.findOne(
         {
             username: username
+        },
+        (err, result) => 
+            err? rej(err): res(result)
+    ))
+}
+
+function getUserByUserId(id) {
+    return new Promise((res, rej) => db.findOne(
+        {
+            _id: id
         },
         (err, result) => 
             err? rej(err): res(result)
@@ -24,14 +34,14 @@ function getUserByUserName(username) {
 function login(user) {
     return getUserByUserName(user.username)
         .then((data) => {
-            if(data.length > 0) {
-                if(bcrypt.compareSync(user.password, data[0].password)) {
+            if(data) {
+                if(bcrypt.compareSync(user.password, data.password)) {
                     return {
-                        username: data[0].username,
-                        _id: data[0]._id,
+                        username: data.username,
+                        _id: data._id,
                         token: jwt.sign({
-                            username: data[0].username,
-                            _id: data[0]._id
+                            username: data.username,
+                            _id: data._id
                         }, secretJWTSeed)
                     }
                 }
@@ -60,4 +70,5 @@ function register(user) {
 exports.login = login
 exports.register = register
 exports.verifyJWT = verifyJWT
+exports.getUserByUserId = getUserByUserId
 exports.getUserByUserName = getUserByUserName

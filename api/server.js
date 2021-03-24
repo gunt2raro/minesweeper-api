@@ -1,5 +1,6 @@
 const http = require('http'),
     bodyParser = require('body-parser'),
+    bearerToken = require('express-bearer-token'),
     express = require('express'),
     cors = require('cors'),
     router = express()
@@ -15,6 +16,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 router.use(cors("*"))
+router.use(bearerToken())
 router.use('/api/v1', require('./routes.v1'))
 
 server.listen(3000, () => {
