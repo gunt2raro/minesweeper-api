@@ -102,7 +102,6 @@ router.put('/cel', (req, res) => {
             data: newGame,
             winner: verify
         })
-
 })
 
 module.exports = router
