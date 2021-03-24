@@ -1,5 +1,10 @@
 # Minesweeper API
 
+## Node version
+
+node >= 13.14.0
+npm >= 6.14.4
+
 ## Run the app
 
     npm run start:dev
