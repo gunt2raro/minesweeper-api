@@ -87,50 +87,70 @@ function fillWithNumbers(game) {
 function discoverEmptySpace(game, cel) {
     // 4th quadrant
     for(let i=cel.x; i < game[0].length; i++ ) {
+        let justBroke = false
         for(let j=cel.y; j < game.length; j++ ) {
             if(
                 game[j][i].mine
             ) {
+                justBroke = true
                 break;
             } else {
                 game[j][i].open = true
             }
+        }
+        if(justBroke) {
+            break;
         }
     }
     // 3rd quadrant
     for(let i=cel.x; i >= 0; i-- ) {
+        let justBroke = false
         for(let j=cel.y; j < game.length; j++ ) {
             if(
                 game[j][i].mine
             ) {
+                justBroke = true
                 break;
             } else {
                 game[j][i].open = true
             }
+        }
+        if(justBroke) {
+            break;
         }
     }
     // 1st quadrant
     for(let i=cel.x; i >= 0; i-- ) {
+        let justBroke = false
         for(let j=cel.y; j >= 0; j-- ) {
             if(
                 game[j][i].mine
             ) {
+                justBroke = true
                 break;
             } else {
                 game[j][i].open = true
             }
         }
+        if(justBroke) {
+            break;
+        }
     }
     // 2nd quadrant
     for(let i=cel.x; i < game[0].length; i++ ) {
+        let justBroke = false
         for(let j=cel.y; j >= 0; j-- ) {
             if(
                 game[j][i].mine
             ) {
+                justBroke = true
                 break;
             } else {
                 game[j][i].open = true
             }
+        }
+        if(justBroke) {
+            break;
         }
     }
     return game
